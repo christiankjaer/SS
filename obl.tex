@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath} % flere matematikkommandoer
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[utf8]{inputenc} % æøå
+\usepackage[T1]{fontenc} % mere æøå
+\usepackage[english]{babel} % orddeling
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\title{Obligatorisk opgave - SS}
+\author{Christian Kjær Larsen (\texttt{wkm839})\\ Lukas Svarre Engedal (\texttt{pqd294})}
+
+\begin{document}
+\maketitle
+
+\section*{Opgave 2}
+
+\paragraph{1.}
+
+\[
+    \iint_A \frac{4x^3}{y^3} dydx = \int_0^1 \left( \int_x^\infty \frac{4x^3}{y^3} dy \right) dx
+    = \int_0^1 4x^3 \left[ \frac{-1}{2y^2} \right]_x^\infty dx
+    = \int_0^1 2x dx = 1
+\]
+
+\paragraph{2.}
+
+\paragraph{3.}
+\[
+    f_X(y)=\int_x^\infty \frac{4x^3}{y^3} dy = 2x
+\]
+\paragraph{4.}
+\[
+    E(X) = \int_0^1 2x^2 dx = \left[ \frac{2}{3}x^3 \right]_0^1 = \frac{2}{3}
+\]
+\[
+    E(X^2) = \int_0^1 2x^3 dx = \left[ \frac{1}{2}x^4 \right]_0^1 = \frac{1}{2}
+\]
+\[
+    Var(X) = E(X^2) - (E(X))^2 = \frac{1}{2} - \frac{4}{9} = \frac{1}{18}
+\]
+\paragraph{5.}
+Når $y > 1$ så kan $x$ være i intervallet $[0,1]$. Derfor er den marginale tæthed for $Y$ her
+\[
+    f_Y(y) = \int_0^1 \frac{4x^3}{y^3} dx = \frac{1}{y^3} \int_0^1 4x^3 dx = \frac{1}{y^3}
+\]
+Når $0 < y \leq 1$ så er $x$ i intervallet $[0, y]$ derfor er den marginale tæthed for $Y$ her
+\[
+    f_Y(y) = \int_0^y \frac{4x^3}{y^3} dx = \frac{1}{y^3} \int_0^y 4x^3 dx = y
+\]
+Hvis $y < 0$ så er $f_Y(y) = 0$
+\paragraph{6.}
+\paragraph{7.}
+\paragraph{8.}
+
+
+
+\end{document}
