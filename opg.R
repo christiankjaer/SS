@@ -62,9 +62,9 @@ G <- function(y) {
 
 Ginv <- function(y) {
     if (0 < y && y < 0.5) {
-        r <- 1 / sqrt(1 - 2*y)
-    } else if (0.5 < y) {
         r <- sqrt(2*y)
+    } else if (0.5 < y) {
+        r <- 1 / sqrt(2*y-1)
     } else {
         r <- 0
     }
@@ -81,11 +81,8 @@ Ginv2 <- function(y) {
 
 Y <- runif(10000, 0, 1)
 GinvY <- sapply(Y, Ginv, simplify=array)
-#GinvY <- rep(NA, 10000)
-#GinvY[Y<0.5] <- 
 x1 <- seq(from=0, to=100, length.out=10000)
 G1 <- sapply(x1, G, simplify=array)
 mean(GinvY)
 hist(GinvY, prob=TRUE, breaks=max(GinvY*4), xlim=c(0,6))
 lines(x1, G1, col="red")
-
