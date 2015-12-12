@@ -16,30 +16,32 @@
 \section*{Opgave 2}
 
 \paragraph{1.}
-Blah
+Området hvor funktionen $f$ er positiv er vist herunder
 \begin{center}
   \includegraphics[width=0.6\textwidth]{opg21.pdf}
 \end{center}
+For at tjekke at $f$ er en sandsynlighedstæthed, så integreres $f$ over området $A$.
 \[
     \iint_A \frac{4x^3}{y^3} dydx = \int_0^1 \left( \int_x^\infty \frac{4x^3}{y^3} dy \right) dx
     = \int_0^1 4x^3 \left[ \frac{-1}{2y^2} \right]_x^\infty dx
     = \int_0^1 2x dx = 1
 \]
-
+Det integrerer til 1 og $f$ er ikke negativ over hele $\mathbb{R}^2$. Derfor er $f$ en gyldig tæthed.
 \paragraph{2.}
 \begin{center}
   \includegraphics[width=0.6\textwidth]{opg22.pdf}
 \end{center}
 \paragraph{3.}
+For at få den marginale tæthed for $X$ så integreres $y$ væk.
 \[
-    f_X(y)=\int_x^\infty \frac{4x^3}{y^3} dy = 2x
+    f_X(x)=\int_x^\infty \frac{4x^3}{y^3} dy = 2x
 \]
 \paragraph{4.}
 \[
-    E(X) = \int_0^1 2x^2 dx = \left[ \frac{2}{3}x^3 \right]_0^1 = \frac{2}{3}
+    E(X) = \int_0^1 xf_X(x)dx = \int_0^1 2x^2 dx = \left[ \frac{2}{3}x^3 \right]_0^1 = \frac{2}{3}
 \]
 \[
-    E(X^2) = \int_0^1 2x^3 dx = \left[ \frac{1}{2}x^4 \right]_0^1 = \frac{1}{2}
+    E(X^2) = \int_0^1 x^2 f_X(x)dx = \int_0^1 2x^3 dx = \left[ \frac{1}{2}x^4 \right]_0^1 = \frac{1}{2}
 \]
 \[
     Var(X) = E(X^2) - (E(X))^2 = \frac{1}{2} - \frac{4}{9} = \frac{1}{18}
