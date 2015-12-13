@@ -64,17 +64,9 @@ Ginv <- function(y) {
     if (0 < y && y < 0.5) {
         r <- sqrt(2*y)
     } else if (0.5 < y) {
-        r <- 1 / sqrt(2*y-1)
+        r <- 1 / sqrt(2-2*y)
     } else {
         r <- 0
-    }
-    return(r)
-}
-
-Ginv2 <- function(y) {
-    r <- sqrt(2*y)
-    if (0 < y && y < 0.5) {
-        r <- r + 1 / sqrt(1 - 2*y)
     }
     return(r)
 }

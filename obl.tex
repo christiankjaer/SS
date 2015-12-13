@@ -58,19 +58,21 @@ Når $0 < y \leq 1$ så er $x$ i intervallet $[0, y]$ derfor er den marginale t�
 Hvis $y < 0$ så er $f_Y(y) = 0$
 \paragraph{6.}
 \paragraph{7.}
+For at få fordelingsfunktionen, så integreres tæthedsfunktionen den marginale tæthedsfunktion for $Y$. I det andet tilfælde, når $1 < y$ så lægger vi sandsynligheden for $0 < y \leq 1$ til, ellers er det ikke en fordelingsfunktion.
 \[
     G(y) =
     \begin{cases}
         \int_0^y y dy = \frac{y^2}{2} & 0<y\leq 1\\
-        \int_1^y y^{-3} dy = \left[ \frac{-1}{2y^2} \right]_1^y = \frac{-1}{2y^2} - \frac{-1}{2} = \frac{1}{2}\left( 1-\frac{1}{y^2} \right) & 1 < y \\
+        \int_0^1 y dy + \int_1^y y^{-3} dy = \frac{1}{2}\left[ \frac{-1}{2y^2} \right]_1^y = \frac{1}{2} + \frac{-1}{2y^2} - \frac{-1}{2} = 1-\frac{1}{2y^2} & 1 < y \\
         0 &\text{ellers}
     \end{cases}
 \]
+For at få den inverse, så sættes de gamle grænser ind i $G$ for at få de nye grænser. Derudover løses ligningen $y = G^{-1}(x)$ for $x$ og sættes til at være den fraktilfunktionen.
 \[
     G^{-1}(y) =
     \begin{cases}
         \sqrt{2y} & 0 < y \leq \frac{1}{2} \\
-        \frac{1}{\sqrt{1-2y}} & 0 < y \leq \frac{1}{2}
+        \frac{1}{\sqrt{2-2y}} & \frac{1}{2} < y \leq 1
     \end{cases}
 \]
 \paragraph{8.}
