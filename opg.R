@@ -21,14 +21,14 @@ sdLogAvitM = sd(logAvitM)
 plot <- 1
 if (plot==1) {
     pdf("opg13_1.pdf", height=6, width=6)
-    hist(avitM, breaks=30, prob=TRUE)
+    hist(avitM, breaks=30, prob=TRUE, main="Histogram af avitM")
     x1 <- seq(0, max(avitM), max(avitM)/nm)
     f1 <- dnorm(x1, mean=meanAvitM, sd=sdAvitM)
     lines(x1, f1, col="red")
     dev.off()
     
     pdf("opg13_2.pdf", height=6, width=6)
-    hist(logAvitM, breaks=30, prob=TRUE)
+    hist(logAvitM, breaks=30, prob=TRUE, main="Histogram af log(avitM)")
     x2 <- seq(0, max(logAvitM), max(logAvitM)/nm)
     f2 <- dnorm(x2, mean=meanLogAvitM, sd=sdLogAvitM)
     lines(x2, f2, col="red")
@@ -46,7 +46,7 @@ f <- function(y, s, u) {
 
 if (plot==1) {
     pdf("opg16.pdf", height=6, width=6)
-    hist(avitM, breaks=30, prob=TRUE)
+    hist(avitM, breaks=30, prob=TRUE, main="Histogram af avitM")
     x1 <- seq(0, max(avitM), max(avitM)/nm)
     f1 <- f(x1, sdLogAvitM, meanLogAvitM)
     lines(x1, f1, col="red")
@@ -66,7 +66,7 @@ G <- function(y) {
 }
 
 Ginv <- function(y) {
-    if (0 < y && y < 0.5) {
+    if (0 < y && y <= 0.5) {
         r <- sqrt(2*y)
     } else if (0.5 < y) {
         r <- 1 / sqrt(2-2*y)
@@ -83,8 +83,12 @@ G1 <- sapply(x1, G, simplify=array)
 mean(GinvY)
 
 if (plot==1) {
-    pdf("opg28.pdf", height=6, width=6)
-    hist(GinvY, prob=TRUE, breaks=max(GinvY*4), xlim=c(0,6))
+    pdf("opg28_1.pdf", height=6, width=6)
+    hist(GinvY, prob=TRUE, breaks=100, main="Histogram af 10000 simuleringer af Y")
+    dev.off()
+
+    pdf("opg28_2.pdf", height=6, width=6)
+    hist(GinvY, prob=TRUE, breaks=max(GinvY*4), xlim=c(0,6), ylim=c(0,1), main="Histogram af 10000 simuleringer af Y")
     lines(x1, G1, col="red")
     dev.off()
 }
