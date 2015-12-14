@@ -137,7 +137,22 @@ Når $0 < y \leq 1$ så er $x$ i intervallet $[0, y]$ derfor er den marginale t�
     f_Y(y) = \int_0^y \frac{4x^3}{y^3} \mathrm{d}x = \frac{1}{y^3} \int_0^y 4x^3 \mathrm{d}x = y
 \]
 Hvis $y < 0$ så er $f_Y(y) = 0$
+
 \paragraph{6.}
+Vi udregner først middelværdien af $Y$ 
+\begin{flalign*}
+  E(Y) &= \int_0^1 yy \mathrm{d}y + \int_1^\infty yy^{-3} \mathrm{d}y &\\
+  &= \frac{4}{3} &\\
+\end{flalign*}
+
+Dernæst kigger vi på $E(Y^2)$
+\begin{flalign*}
+  E(Y) &= \int_0^1 y^2y \mathrm{d}y + \int_1^\infty y^2y^{-3} \mathrm{d}y &\\
+  &= \frac{1}{4} + \int_1^\infty y^{-1} \mathrm{d}y &\\
+  &= \infty &\\
+\end{flalign*}
+Altså har $Y$ ikke varians.
+
 \paragraph{7.}
 For at få fordelingsfunktionen, så integreres den marginale tæthedsfunktion for $Y$. 
 Vi starter med at integrere når $0 < y \leq 1$
@@ -160,6 +175,7 @@ Det giver at fordelingsfunktionen er
         0 &\text{ellers}
     \end{cases}
 \]
+
 For at få den inverse, så sættes de gamle grænser ind i $G$ for at få de nye grænser. Derudover løses ligningen $y = G^{-1}(x)$ for $x$ og sættes til at være den fraktilfunktionen.
 \[
     G^{-1}(y) =
@@ -168,11 +184,20 @@ For at få den inverse, så sættes de gamle grænser ind i $G$ for at få de ny
         \frac{1}{\sqrt{2-2y}} & \frac{1}{2} < y \leq 1
     \end{cases}
 \]
+
 \paragraph{8.}
+Vi laver 10000 simulerede udfald af $Y$ og beregner en middelværdi på 1.32. Til sammenligning fik vi 1.33 i (2.6), hvilket må siges at passe meget godt overens.
+
+Vi plotter vores simulerede data
+\begin{center}
+  \includegraphics[width=0.6\textwidth]{opg28_1.pdf}
+\end{center}
+
+Vi zoomer så ind på intervallet (0, 6) på grafen og tegner samtidig tætheden $G$.
+\begin{center}
+  \includegraphics[width=0.6\textwidth]{opg28_2.pdf}
+\end{center}
+
+Igen passer funktionen overordentligt godt sammen med data'ene.
 
 \end{document}
-
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: t
-%%% End:
