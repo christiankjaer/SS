@@ -46,7 +46,7 @@ For de logaritmiske værdier derimod er median og middelværdi så godt som iden
 Vi estimerer sandsynligheden for at en tilfældig mand har et A-vitaminindtag på højst 2000 ved at køre \verb!pnorm(2000, meanAvitM, sdAvitM!) og får $51.8\%$.
 
 \paragraph{5.}
-Vi bestemmer først fordelingsfunktionen for $Y = e^X$ ved at udnytte at vi kender fordelingsfunktionen for den stokastiske variabel $X \sim N(\mu, \sigma^2)$
+Vi bestemmer først fordelingsfunktionen for $Y = e^X$ ved at udnytte at vi kender fordelingsfunktionen for den stokastiske variabel $X \sim N(\mu, \sigma^2)$.
 
 \begin{align*}
   F_Y(y) &= P(e^X < y) &\\
@@ -139,22 +139,20 @@ Når $0 < y \leq 1$ så er $x$ i intervallet $[0, y]$ derfor er den marginale t�
 Hvis $y < 0$ så er $f_Y(y) = 0$
 
 \paragraph{6.}
-Vi udregner først middelværdien af $Y$ 
-\begin{flalign*}
-  E(Y) &= \int_0^1 yy \mathrm{d}y + \int_1^\infty yy^{-3} \mathrm{d}y &\\
-  &= \frac{4}{3} &\\
-\end{flalign*}
+Vi udregner først middelværdien af $Y$
+\begin{align*}
+    E(Y) &= \int_0^1 yy \mathrm{d}y + \int_1^\infty yy^{-3} \mathrm{d}y = \frac{4}{3}
+\end{align*}
 
 Dernæst kigger vi på $E(Y^2)$
-\begin{flalign*}
+\begin{align*}
   E(Y) &= \int_0^1 y^2y \mathrm{d}y + \int_1^\infty y^2y^{-3} \mathrm{d}y &\\
-  &= \frac{1}{4} + \int_1^\infty y^{-1} \mathrm{d}y &\\
-  &= \infty &\\
-\end{flalign*}
+  &= \frac{1}{4} + \int_1^\infty y^{-1} \mathrm{d}y = \infty
+\end{align*}
 Altså har $Y$ ikke varians.
 
 \paragraph{7.}
-For at få fordelingsfunktionen, så integreres den marginale tæthedsfunktion for $Y$. 
+For at få fordelingsfunktionen, så integreres den marginale tæthedsfunktion for $Y$.
 Vi starter med at integrere når $0 < y \leq 1$
 \[
     G(y) =
