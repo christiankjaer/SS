@@ -13,57 +13,135 @@
 \begin{document}
 \maketitle
 
-\section*{Opgave 2}
-
+\section*{Opgave 1}
 \paragraph{1.}
-Området hvor funktionen $f$ er positiv er vist herunder
+Vi indlæser data'ene, og bestemmer antallet af mænd og kvinder ved at sortere ud fra $sex$ kolonnen. Der indgår 1079 mænd og 1145 kvinder i undersøgelsen.
+
+\paragraph{2.}
+Vi udregnner median, gennemsnit, stikprøvevarians og stikprøvespredning for data'ene. \\
+
+\begin{tabular}{l | c c c c}
+  & Median & Gennemsnit & Stikprøvevarians & Stikprøvespredning \\
+  \hline
+  avitM & 1782 & 1959 & 829448 & 910.7 \\
+  logavitM & 7.486 & 7.485 & 0.192 & 0.438 \\
+\end{tabular} \\
+
+\paragraph{3.}
+Vi plotter et histogram for \verb!AvitM! data'ene samt de tilsvarende logaritmiske data, og tegner ligeledes tæthederne for normalfordelingerne med middelværdi og varians som beskrevet i tabellen ovenfor.
+
+\begin{center}
+  \includegraphics[width=0.6\textwidth]{opg13_1.pdf}
+\end{center}
+
+Hvis vi kigger på median og middelværdi for \verb!AvitM! data'ene kan vi se at der er en ikke ubetydelig forskel på de to værdier, og vi kan ligeledes se på figuren at den påtegnede normalfordeling ikke passer særlig godt overens med data'ene.
+
+\begin{center}
+  \includegraphics[width=0.6\textwidth]{opg13_2.pdf}
+\end{center}
+
+For de logaritmiske værdier derimod er median og middelværdi så godt som identisk, og vi kan også se på grafen at den påtegnede normalfordeling passer overordentlig godt på data'ene. Vi må derfor konkludere at det er logaritmen til A-vitaminindtaget der er normalfordelt.
+
+\paragraph{4.}
+Vi estimerer sandsynligheden for at en tilfældig mand har et A-vitaminindtag på højst 2000 ved at køre \verb!pnorm(2000, meanAvitM, sdAvitM!) og får $51.8\%$.
+
+\paragraph{5.}
+Vi bestemmer først fordelingsfunktionen for $Y = e^X$ ved at udnytte at vi kender fordelingsfunktionen for den stokastiske variabel $X \sim N(\mu, \sigma^2)$
+
+\begin{flalign*}
+  F_Y(y) &= P(e^X < y) &\\
+         &= P(X < ln(y)) &\\
+         &= F_X(ln(y)) &\\
+         &= \Phi \left( \frac{\ln{y} - \mu}{\sigma} \right) &\\
+         &= \int_{-\infty}^{\frac{ln{y}-\mu}{\sigma}} \frac{1}{\sqrt{2\pi}} \mathrm{e}^{-t^2/2}\,\mathrm{d}t &\\
+\end{flalign*}
+
+Derefter bestemmer vi så tætheden for $Y$ ved at differentiere fordelingsfunktionen
+
+\begin{flalign*}
+  f_Y(y) &= \frac{\mathrm{d}}{\mathrm{d}y} \Phi \left( \frac{\ln{y} - \mu}{\sigma} \right) &\\
+         &= \phi \left( \frac{\ln{y} - \mu}{\sigma} \right) * \frac{1}{y\sigma} &\\
+         &= \frac{1}{y\sqrt{2\pi\sigma^2}} \exp \left(-\frac{(\ln{y} - \mu)^2}{2\sigma^2} \right) &\\
+\end{flalign*}
+
+Både for fordelingsfunktionen og tætheden skal det desuden gælde at $y > 0$, da vi ellers ikke kan beregne $\ln{y}$.
+
+\paragraph{6.}
+Vi plotter histogrammet for \verb!AvitM! data'ene igen, og denne gang tilføjer vi så grafen for tæthedsfuktionen, hvor vi bruger de logaritmiske værdier for middelværdi og varians, da vi jo tidligere bestemte at det var logaritmen til data'ene der var normalfordelt.
+
+\begin{center}
+  \includegraphics[width=0.6\textwidth]{opg16.pdf}
+\end{center}
+
+Denne gang ser funktionen ud til at passe glimrende sammen med data'ene.
+
+\section*{Opgave 2}
+\paragraph{1.}
+Området $A$ hvor funktionen $f$ er positiv er skitseret herunder
+
 \begin{center}
   \includegraphics[width=0.6\textwidth]{opg21.pdf}
 \end{center}
+
 For at tjekke at $f$ er en sandsynlighedstæthed, så integreres $f$ over området $A$.
 \[
-    \iint_A \frac{4x^3}{y^3} dydx = \int_0^1 \left( \int_x^\infty \frac{4x^3}{y^3} dy \right) dx
-    = \int_0^1 4x^3 \left[ \frac{-1}{2y^2} \right]_x^\infty dx
-    = \int_0^1 2x dx = 1
+    \iint_A \frac{4x^3}{y^3} \mathrm{d}y\mathrm{d}x = \int_0^1 \left( \int_x^\infty \frac{4x^3}{y^3} \mathrm{d}y \right) \mathrm{d}x
+    = \int_0^1 4x^3 \left[ \frac{-1}{2y^2} \right]_x^\infty \mathrm{d}x
+    = \int_0^1 2x \mathrm{d}x = 1
 \]
-Det integrerer til 1 og $f$ er ikke negativ over hele $\mathbb{R}^2$. Derfor er $f$ en gyldig tæthed.
+Det integrerer til 1, og da $f$ er ikke-negativ over hele $\mathbb{R}^2$, er $f$ derfor en gyldig tæthed.
+
 \paragraph{2.}
+Området $A \cap B$ er skitseret herunder
+
 \begin{center}
   \includegraphics[width=0.6\textwidth]{opg22.pdf}
 \end{center}
+
+Vi bestemmer dernæst $P(X + Y =< 1)$. Det gør vi ved at bemærke at $x$ er fri til at antage en værdi mellem 0 og 1/2, og $y$ er bundet for neden af $x$ og for oven af $1 - x$
+
+\begin{flalign*}
+  P(X + Y =< 1) &= \int_0^{1/2} \left( \int_x^{1 - x} \frac{4x^3}{y^3} \mathrm{d}y \right) \mathrm{d}x &\\
+  &= \int_0^{1/2} \left( \left[-\frac{2x^3}{y^2} \right]_{x}^{1-x} \right) \mathrm{d}x &\\
+  &= \int_0^{1/2} \left( \left[ \frac{2x^3}{y^2} \right]_{1-x}^x \right) \mathrm{d}x &\\
+  &= \int_0^{1/2} 2x - \frac{2x^3}{(1-x)^2} \mathrm{d}x &\\
+  &= 0.1589 &\\
+\end{flalign*}
+
 \paragraph{3.}
 For at få den marginale tæthed for $X$ så integreres $y$ væk.
 \[
-    f_X(x)=\int_x^\infty \frac{4x^3}{y^3} dy = 2x
+    f_X(x)=\int_x^\infty \frac{4x^3}{y^3} \mathrm{d}y = 2x
 \]
 \paragraph{4.}
-\[
-    E(X) = \int_0^1 xf_X(x)dx = \int_0^1 2x^2 dx = \left[ \frac{2}{3}x^3 \right]_0^1 = \frac{2}{3}
-\]
-\[
-    E(X^2) = \int_0^1 x^2 f_X(x)dx = \int_0^1 2x^3 dx = \left[ \frac{1}{2}x^4 \right]_0^1 = \frac{1}{2}
-\]
-\[
-    Var(X) = E(X^2) - (E(X))^2 = \frac{1}{2} - \frac{4}{9} = \frac{1}{18}
-\]
+Vi bestemmer middelværdi og varians for $X$
+\begin{flalign*}
+  E(X) &= \int_0^1 xf_X(x)\mathrm{d}x = \int_0^1 2x^2 \mathrm{d}x = \left[ \frac{2}{3}x^3 \right]_0^1 &\\
+  &= \frac{2}{3} &\\
+  E(X^2) &= \int_0^1 x^2 f_X(x)\mathrm{d}x = \int_0^1 2x^3 \mathrm{d}x = \left[ \frac{1}{2}x^4 \right]_0^1 &\\
+  &= \frac{1}{2} &\\
+  Var(X) &= E(X^2) - (E(X))^2 = \frac{1}{2} - \frac{4}{9} &\\
+  &= \frac{1}{18} &\\
+\end{flalign*}
+
 \paragraph{5.}
 Når $y > 1$ så kan $x$ være i intervallet $[0,1]$. Derfor er den marginale tæthed for $Y$ her
 \[
-    f_Y(y) = \int_0^1 \frac{4x^3}{y^3} dx = \frac{1}{y^3} \int_0^1 4x^3 dx = \frac{1}{y^3}
+    f_Y(y) = \int_0^1 \frac{4x^3}{y^3} \mathrm{d}x = \frac{1}{y^3} \int_0^1 4x^3 \mathrm{d}x = \frac{1}{y^3}
 \]
 Når $0 < y \leq 1$ så er $x$ i intervallet $[0, y]$ derfor er den marginale tæthed for $Y$ her
 \[
-    f_Y(y) = \int_0^y \frac{4x^3}{y^3} dx = \frac{1}{y^3} \int_0^y 4x^3 dx = y
+    f_Y(y) = \int_0^y \frac{4x^3}{y^3} \mathrm{d}x = \frac{1}{y^3} \int_0^y 4x^3 \mathrm{d}x = y
 \]
 Hvis $y < 0$ så er $f_Y(y) = 0$
 \paragraph{6.}
 \paragraph{7.}
-For at få fordelingsfunktionen, så integreres tæthedsfunktionen den marginale tæthedsfunktion for $Y$. I det andet tilfælde, når $1 < y$ så lægger vi sandsynligheden for $0 < y \leq 1$ til, ellers er det ikke en fordelingsfunktion.
+For at få fordelingsfunktionen, så integreres den marginale tæthedsfunktion for $Y$. I det andet tilfælde, når $1 < y$ så lægger vi sandsynligheden for $0 < y \leq 1$ til, ellers er det ikke en fordelingsfunktion.
 \[
     G(y) =
     \begin{cases}
-        \int_0^y y dy = \frac{y^2}{2} & 0<y\leq 1\\
-        \int_0^1 y dy + \int_1^y y^{-3} dy = \frac{1}{2}\left[ \frac{-1}{2y^2} \right]_1^y = \frac{1}{2} + \frac{-1}{2y^2} - \frac{-1}{2} = 1-\frac{1}{2y^2} & 1 < y \\
+        \int_0^y y \mathrm{d}y = \frac{y^2}{2} & 0<y\leq 1\\
+        \int_0^1 y \mathrm{d}y + \int_1^y y^{-3} \mathrm{d}y = \frac{1}{2}\left[ \frac{-1}{2y^2} \right]_1^y = \frac{1}{2} + \frac{-1}{2y^2} - \frac{-1}{2} = 1-\frac{1}{2y^2} & 1 < y \\
         0 &\text{ellers}
     \end{cases}
 \]
@@ -80,3 +158,8 @@ For at få den inverse, så sættes de gamle grænser ind i $G$ for at få de ny
 
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
