@@ -18,18 +18,21 @@ varLogAvitM = var(logAvitM)
 sdLogAvitM = sd(logAvitM)
 
 # Opg 1.3
-plot <- 0
+plot <- 1
 if (plot==1) {
+    pdf("opg13_1.pdf", height=6, width=6)
     hist(avitM, breaks=30, prob=TRUE)
     x1 <- seq(0, max(avitM), max(avitM)/nm)
     f1 <- dnorm(x1, mean=meanAvitM, sd=sdAvitM)
     lines(x1, f1, col="red")
+    dev.off()
     
-    dev.new()
+    pdf("opg13_2.pdf", height=6, width=6)
     hist(logAvitM, breaks=30, prob=TRUE)
     x2 <- seq(0, max(logAvitM), max(logAvitM)/nm)
     f2 <- dnorm(x2, mean=meanLogAvitM, sd=sdLogAvitM)
     lines(x2, f2, col="red")
+    dev.off()
 }
 # Opg 1.4
 pnorm(2000, meanAvitM, sdAvitM)
@@ -42,10 +45,12 @@ f <- function(y, s, u) {
 }
 
 if (plot==1) {
+    pdf("opg16.pdf", height=6, width=6)
     hist(avitM, breaks=30, prob=TRUE)
     x1 <- seq(0, max(avitM), max(avitM)/nm)
     f1 <- f(x1, sdLogAvitM, meanLogAvitM)
     lines(x1, f1, col="red")
+    dev.off()
 }
 
 # Opg 2.8
@@ -76,5 +81,10 @@ GinvY <- sapply(Y, Ginv, simplify=array)
 x1 <- seq(from=0, to=100, length.out=10000)
 G1 <- sapply(x1, G, simplify=array)
 mean(GinvY)
-hist(GinvY, prob=TRUE, breaks=max(GinvY*4), xlim=c(0,6))
-lines(x1, G1, col="red")
+
+if (plot==1) {
+    pdf("opg28.pdf", height=6, width=6)
+    hist(GinvY, prob=TRUE, breaks=max(GinvY*4), xlim=c(0,6))
+    lines(x1, G1, col="red")
+    dev.off()
+}
