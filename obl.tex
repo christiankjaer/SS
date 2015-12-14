@@ -31,13 +31,13 @@ Vi udregnner median, gennemsnit, stikprøvevarians og stikprøvespredning for da
 Vi plotter et histogram for \verb!AvitM! data'ene samt de tilsvarende logaritmiske data, og tegner ligeledes tæthederne for normalfordelingerne med middelværdi og varians som beskrevet i tabellen ovenfor.
 
 \begin{center}
-  \includegraphics[width=0.6\textwidth]{opg13_1.pdf}
+  \includegraphics[width=0.8\textwidth]{opg13_1.pdf}
 \end{center}
 
 Hvis vi kigger på median og middelværdi for \verb!AvitM! data'ene kan vi se at der er en ikke ubetydelig forskel på de to værdier, og vi kan ligeledes se på figuren at den påtegnede normalfordeling ikke passer særlig godt overens med data'ene.
 
 \begin{center}
-  \includegraphics[width=0.6\textwidth]{opg13_2.pdf}
+  \includegraphics[width=0.8\textwidth]{opg13_2.pdf}
 \end{center}
 
 For de logaritmiske værdier derimod er median og middelværdi så godt som identisk, og vi kan også se på grafen at den påtegnede normalfordeling passer overordentlig godt på data'ene. Vi må derfor konkludere at det er logaritmen til A-vitaminindtaget der er normalfordelt.
@@ -48,21 +48,21 @@ Vi estimerer sandsynligheden for at en tilfældig mand har et A-vitaminindtag p�
 \paragraph{5.}
 Vi bestemmer først fordelingsfunktionen for $Y = e^X$ ved at udnytte at vi kender fordelingsfunktionen for den stokastiske variabel $X \sim N(\mu, \sigma^2)$
 
-\begin{flalign*}
+\begin{align*}
   F_Y(y) &= P(e^X < y) &\\
-         &= P(X < ln(y)) &\\
-         &= F_X(ln(y)) &\\
-         &= \Phi \left( \frac{\ln{y} - \mu}{\sigma} \right) &\\
-         &= \int_{-\infty}^{\frac{ln{y}-\mu}{\sigma}} \frac{1}{\sqrt{2\pi}} \mathrm{e}^{-t^2/2}\,\mathrm{d}t &\\
-\end{flalign*}
+  &= P(X < \ln y) &\\
+  &= F_X(\ln y) &\\
+  &= \Phi \left( \frac{\ln{y} - \mu}{\sigma} \right) &\\
+  &= \int_{-\infty}^{\frac{\ln{y}-\mu}{\sigma}} \frac{1}{\sqrt{2\pi}} \mathrm{e}^{-t^2/2}\,\mathrm{d}t &\\
+\end{align*}
 
 Derefter bestemmer vi så tætheden for $Y$ ved at differentiere fordelingsfunktionen
 
-\begin{flalign*}
+\begin{align*}
   f_Y(y) &= \frac{\mathrm{d}}{\mathrm{d}y} \Phi \left( \frac{\ln{y} - \mu}{\sigma} \right) &\\
          &= \phi \left( \frac{\ln{y} - \mu}{\sigma} \right) * \frac{1}{y\sigma} &\\
          &= \frac{1}{y\sqrt{2\pi\sigma^2}} \exp \left(-\frac{(\ln{y} - \mu)^2}{2\sigma^2} \right) &\\
-\end{flalign*}
+\end{align*}
 
 Både for fordelingsfunktionen og tætheden skal det desuden gælde at $y > 0$, da vi ellers ikke kan beregne $\ln{y}$.
 
@@ -70,7 +70,7 @@ Både for fordelingsfunktionen og tætheden skal det desuden gælde at $y > 0$, 
 Vi plotter histogrammet for \verb!AvitM! data'ene igen, og denne gang tilføjer vi så grafen for tæthedsfuktionen, hvor vi bruger de logaritmiske værdier for middelværdi og varians, da vi jo tidligere bestemte at det var logaritmen til data'ene der var normalfordelt.
 
 \begin{center}
-  \includegraphics[width=0.6\textwidth]{opg16.pdf}
+  \includegraphics[width=0.8\textwidth]{opg16.pdf}
 \end{center}
 
 Denne gang ser funktionen ud til at passe glimrende sammen med data'ene.
@@ -100,13 +100,13 @@ Området $A \cap B$ er skitseret herunder
 
 Vi bestemmer dernæst $P(X + Y =< 1)$. Det gør vi ved at bemærke at $x$ er fri til at antage en værdi mellem 0 og 1/2, og $y$ er bundet for neden af $x$ og for oven af $1 - x$
 
-\begin{flalign*}
-  P(X + Y =< 1) &= \int_0^{1/2} \left( \int_x^{1 - x} \frac{4x^3}{y^3} \mathrm{d}y \right) \mathrm{d}x &\\
+\begin{align*}
+    P(X + Y \leq 1) &= \int_0^{1/2} \left( \int_x^{1 - x} \frac{4x^3}{y^3} \mathrm{d}y \right) \mathrm{d}x &\\
   &= \int_0^{1/2} \left( \left[-\frac{2x^3}{y^2} \right]_{x}^{1-x} \right) \mathrm{d}x &\\
   &= \int_0^{1/2} \left( \left[ \frac{2x^3}{y^2} \right]_{1-x}^x \right) \mathrm{d}x &\\
   &= \int_0^{1/2} 2x - \frac{2x^3}{(1-x)^2} \mathrm{d}x &\\
   &= 0.1589 &\\
-\end{flalign*}
+\end{align*}
 
 \paragraph{3.}
 For at få den marginale tæthed for $X$ så integreres $y$ væk.
@@ -114,15 +114,18 @@ For at få den marginale tæthed for $X$ så integreres $y$ væk.
     f_X(x)=\int_x^\infty \frac{4x^3}{y^3} \mathrm{d}y = 2x
 \]
 \paragraph{4.}
-Vi bestemmer middelværdi og varians for $X$
-\begin{flalign*}
-  E(X) &= \int_0^1 xf_X(x)\mathrm{d}x = \int_0^1 2x^2 \mathrm{d}x = \left[ \frac{2}{3}x^3 \right]_0^1 &\\
-  &= \frac{2}{3} &\\
-  E(X^2) &= \int_0^1 x^2 f_X(x)\mathrm{d}x = \int_0^1 2x^3 \mathrm{d}x = \left[ \frac{1}{2}x^4 \right]_0^1 &\\
-  &= \frac{1}{2} &\\
-  Var(X) &= E(X^2) - (E(X))^2 = \frac{1}{2} - \frac{4}{9} &\\
-  &= \frac{1}{18} &\\
-\end{flalign*}
+Vi bestemmer middelværdi for $X$ med sætning 5.1.9
+\[
+    E(X) = \int_0^1 xf_X(x)\mathrm{d}x = \int_0^1 2x^2 \mathrm{d}x = \left[ \frac{2}{3}x^3 \right]_0^1 = \frac{2}{3}
+\]
+For at bestemme varians skal vi først bruge $E(X^2)$. Den bestemmes med LOTUS sætningen
+\[
+    E(X^2) = \int_0^1 x^2 f_X(x)\mathrm{d}x = \int_0^1 2x^3 \mathrm{d}x = \left[ \frac{1}{2}x^4 \right]_0^1 = \frac{1}{2}
+\]
+Så kan vi udregne variansen
+\[
+    \mathrm{Var}(X) = E(X^2) - (E(X))^2 = \frac{1}{2} - \frac{4}{9} = \frac{1}{18}
+\]
 
 \paragraph{5.}
 Når $y > 1$ så kan $x$ være i intervallet $[0,1]$. Derfor er den marginale tæthed for $Y$ her
@@ -136,12 +139,24 @@ Når $0 < y \leq 1$ så er $x$ i intervallet $[0, y]$ derfor er den marginale t�
 Hvis $y < 0$ så er $f_Y(y) = 0$
 \paragraph{6.}
 \paragraph{7.}
-For at få fordelingsfunktionen, så integreres den marginale tæthedsfunktion for $Y$. I det andet tilfælde, når $1 < y$ så lægger vi sandsynligheden for $0 < y \leq 1$ til, ellers er det ikke en fordelingsfunktion.
+For at få fordelingsfunktionen, så integreres den marginale tæthedsfunktion for $Y$. 
+Vi starter med at integrere når $0 < y \leq 1$
+\[
+    G(y) =
+    \int_0^y y \mathrm{d}y = \frac{y^2}{2} \quad \text{når } 0 < y \leq 1
+\]
+Når $1 < y$ så er fordelingsfunktionen summen af $P(Y \leq 1) + P(1 < Y < y)$
+\[
+    G(y) =
+    \int_0^1 y \mathrm{d}y + \int_1^y y^{-3} \mathrm{d}y = \frac{1}{2}\left[ \frac{-1}{2y^2} \right]_1^y = \frac{1}{2} + \frac{-1}{2y^2} - \frac{-1}{2} = 1-\frac{1}{2y^2}
+    \quad \text{når } 1 < y
+\]
+Det giver at fordelingsfunktionen er
 \[
     G(y) =
     \begin{cases}
-        \int_0^y y \mathrm{d}y = \frac{y^2}{2} & 0<y\leq 1\\
-        \int_0^1 y \mathrm{d}y + \int_1^y y^{-3} \mathrm{d}y = \frac{1}{2}\left[ \frac{-1}{2y^2} \right]_1^y = \frac{1}{2} + \frac{-1}{2y^2} - \frac{-1}{2} = 1-\frac{1}{2y^2} & 1 < y \\
+        \frac{y^2}{2} & 0<y\leq 1\\
+        1-\frac{1}{2y^2} & 1 < y \\
         0 &\text{ellers}
     \end{cases}
 \]
@@ -154,8 +169,6 @@ For at få den inverse, så sættes de gamle grænser ind i $G$ for at få de ny
     \end{cases}
 \]
 \paragraph{8.}
-
-
 
 \end{document}
 
